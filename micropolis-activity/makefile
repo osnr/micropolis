@@ -93,6 +93,24 @@ install-desktop:
 	$(INSTALL) -m 0644 Micropolis.desktop $(DESTDIR)/$(APPLICATIONSDIR)/micropolis.desktop
 	$(INSTALL) -m 0644 Micropolis.png $(DESTDIR)/$(PIXMAPDIR)/micropolis.png
 
+app-bundle: DESTDIR = Micropolis.app/Contents
+app-bundle: DATADIR = Resources
+app-bundle: LIBEXECDIR = Resources/res
+app-bundle: DOCDIR = Resources/doc
+app-bundle: APPLICATIONSDIR = Resources
+app-bundle: PIXMAPDIR = Resources
+app-bundle: BINDIR = MacOS
+app-bundle: res/sim install-dirs install-bin install-res install-images \
+				install-cities install-doc
+	$(INSTALL) -m 0644 Info.plist $(DESTDIR)/
+	$(INSTALL) -m 0644 Micropolis.icns $(DESTDIR)/$(DATADIR)/
+	echo "#!/bin/bash" >$(DESTDIR)/$(BINDIR)/micropolis
+	echo 'export SIMHOME=$$(cd "$$(dirname "$$0")/../Resources"; pwd)' >>$(DESTDIR)/$(BINDIR)/micropolis
+	echo 'echo "Starting Micropolis in $$SIMHOME ... "' >>$(DESTDIR)/$(BINDIR)/micropolis
+	echo 'cd $$SIMHOME' >>$(DESTDIR)/$(BINDIR)/micropolis
+	echo "res/sim &" >>$(DESTDIR)/$(BINDIR)/micropolis
+	chmod 755 $(DESTDIR)/$(BINDIR)/micropolis
+
 uninstall:
 	rm -f $(DESTDIR)/$(BINDIR)/micropolis
 	rm -f $(DESTDIR)/$(LIBEXECDIR)/sim

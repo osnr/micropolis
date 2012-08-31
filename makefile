@@ -69,6 +69,9 @@ install: all
 	cd MicropolisCore ; make install
 	cd micropolis-activity ; make install
 
+app-bundle: all
+	cd micropolis-activity ; make app-bundle
+
 clean:
 	cd MicropolisCore ; make clean
 	cd turbogears ; make clean
