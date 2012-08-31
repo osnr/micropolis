@@ -24,7 +24,7 @@ SHELL=/bin/sh
 #------------------------------------------------------------------------------
 
 CFLAGS= $(OPTIMIZE_FLAG) $(XCFLAGS) -I../src -I../$(TCL_TK_DIR) \
-        -I../$(TCL_UCB_DIR) -I$(XHOME)/include \
+        -I../$(TCL_UCB_DIR) -I/usr/X11R6/include \
 	$(MEM_DEBUG_FLAGS) $(SYS_DEP_FLAGS) \
         -DTK_VERSION=\"2.2/\"
 

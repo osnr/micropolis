@@ -1,4 +1,4 @@
-XINCLUDE = /usr/X11R6/include/X11
+XINCLUDE = /usr/X11R6/include
 XLIB = /usr/X11R6/lib
 TCLHOME = ../tcl
 TKHOME = ../tk
@@ -22,7 +22,6 @@ INSTALL = install -s
 
 INCLUDES = \
 	-Iheaders \
-	-I$(XPMHOME) \
 	-I$(XINCLUDE) \
 	-I$(TCLHOME) \
 	-I$(TCLXHOME)/src \

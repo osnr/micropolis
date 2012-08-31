@@ -132,6 +132,7 @@ objs/$(PYTHONBUILDDIR)/_micropolisengine.so: build_swig setup.py $(SOURCES) $(HE
 build_swig: objs/micropolisengine_wrap.cpp
 
 objs/micropolisengine_wrap.cpp: swig/micropolisengine.i swig/micropolisengine-swig-python.i $(HEADERS)
+	test -d objs || mkdir objs
 	$(SWIG) -python -c++ -Isrc -Wall \
 	        -outdir objs \
 		-o objs/micropolisengine_wrap.cpp \

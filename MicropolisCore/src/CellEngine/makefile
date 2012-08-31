@@ -105,6 +105,7 @@ objs/$(PYTHONBUILDDIR)/_cellengine.so: build_swig setup.py $(SOURCES) $(HEADERS)
 build_swig: objs/cellengine_wrap.cpp
 
 objs/cellengine_wrap.cpp: swig/cellengine.i swig/cellengine-swig-python.i $(HEADERS)
+	test -d objs || mkdir objs
 	$(SWIG) -python -c++ -Isrc -Wall \
 	        -outdir objs \
 	        -o objs/cellengine_wrap.cpp \

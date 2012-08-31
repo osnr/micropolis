@@ -7,6 +7,8 @@
 
 import pyMicropolis.micropolisEngine
 from pyMicropolis.micropolisEngine import micropolisengine, micropolisgtkengine, micropoliswindow, micropolisrobot
+import pygtk
+pygtk.require('2.0')
 import gtk
 import random
 import math
